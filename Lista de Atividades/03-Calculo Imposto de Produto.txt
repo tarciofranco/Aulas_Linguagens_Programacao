@@ -1,0 +1,13 @@
+Desenvolva um algoritmo que calcule o imposto de um determinado produto,
+e ao final imprima os seguintes dados
+    a) Valor Original
+    b) Valor Desconto
+    c) Valor Base
+    d) Valor Imposto
+    e) Valor Final do produto
+O algoritmo deverá seguir as seguintes regras para os calculos.
+    * Regras sobre o valor do produto: 
+    * maior que 1 e menor ou igual a 100   { Imposto de 2% }
+    * maior que 100 e menor ou igual a 200 { Imposto de 5% }
+    * maior que 200 e menor ou igual a 500 { Desconto de 2 % e Imposto de 7% } 
+    * Acima de 500 {Desconto de 4% e Imposto de 10% }
