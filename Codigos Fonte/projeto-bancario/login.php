@@ -1,3 +1,4 @@
+<?php require_once 'config.php' ?>
 <html>
     <head>
         <title>EECP Bancario - Login</title>
@@ -14,7 +15,7 @@
                     <td><input type="password" name="senha" id="senha"></td>
                 </tr>
                 <tr>
-                    <td colspan="2"> <input type="submit" id="acessar" name="acessar"></td>
+                    <td colspan="2"> <input type="submit" id="acessar" name="acessar" value="Acessar"></td>
                 </tr>
             </table>
         </form>
@@ -25,16 +26,15 @@
             //diretorio do db
             $dir = './db/';
             $file_name = 'login.xml';
-            if(opendir($dir)){
+            if(opendir(PASTA_DB)){
                 if(file_exists($dir.$file_name)){                    
-                    $db = simplexml_load_file($dir.$file_name);                    
-                    //var_dump($db);                    
-
+                    $db = simplexml_load_file($dir.$file_name);                                    
+                    
                     $email = $_POST['email'];
                     $senha = $_POST['senha'];
 
                     if($email == $db->email AND $senha == $db->senha){
-                        print 'Passou';
+                        print 'Acesso concedido.';
                     }else{
                         print 'Usuario e/ou senha incorretos';
                     }

@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<login>
-<email>email@projeto.com.br</email>
-<senha>123</senha>
+<?xml version='1.0' encoding='UTF-8'?> 
+<login>  
+  <usuario>
+    <codigo>1</codigo> 
+    <nome>João</nome> 
+    <email>joao@email.com</email> 
+    <senha>123</senha>    
+  </usuario>
 </login>
