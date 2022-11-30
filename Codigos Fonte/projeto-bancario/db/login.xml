@@ -5,5 +5,11 @@
     <nome>João</nome> 
     <email>joao@email.com</email> 
     <senha>123</senha>    
-  </usuario>
+  </usuario>  
+  <usuario>
+    <codigo>2</codigo> 
+    <nome>Jose</nome> 
+    <email>jose@email.com</email> 
+    <senha>456</senha>    
+  </usuario>  
 </login>

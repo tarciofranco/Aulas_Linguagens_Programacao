@@ -23,7 +23,22 @@
                 </tr>
             </table>
         </form>
+        <?php
+        /**
+         * Validacao do formulario
+         */
+        if(isset($_POST['cadastrar'])){
+            $nome   = $_POST['nome'];
+            $emai   = $_POST['email'];
+            $senha  = base64_encode($_POST['senha']);
 
+            /**
+             * Gera linha a ser adicionada no xml
+             */
+            $xml  = "<usuario>";
+            $xml .= "<nome> $nome </nome>";
+        }
+        ?>
         <table border="1">
             <thead>
                 <tr>
@@ -34,24 +49,24 @@
                 </tr>
             </thead>
             <tbody>
-            <?php                
+            <?php     
+            /**
+             * Leitura dos dados ja cadastrados
+             */
                 if(opendir(PASTA_DB)){
                     if(file_exists(PASTA_DB.TABLE_LOGIN)){
                        $db = simplexml_load_file(PASTA_DB.TABLE_LOGIN);                                              
-                       foreach ($db->usuario as $value) {
-                        # code...
-                        
+                       foreach ($db as $usuario) {
+                        # code...  
+                        ?>
+                        <tr>
+                            <td><?php print $usuario->codigo;?></td>
+                            <td><?php print $usuario->nome;?></td>
+                            <td><?php print $usuario->email;?></td>
+                            <td><button >Selecionar</button></td>
+                        </tr>
+                        <?php  
                        }
-                       
-                       
-                     ?>
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <?php  
                     }else{
                         'sem dados';
                     }
@@ -63,4 +78,3 @@
 
         </table>
    
-<?php
