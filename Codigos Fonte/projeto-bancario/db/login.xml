@@ -12,4 +12,10 @@
     <email>jose@email.com</email> 
     <senha>456</senha>    
   </usuario>  
+  <usuario>
+    <codigo>3</codigo> 
+    <nome>Manoel</nome> 
+    <email>manoel@email.com</email> 
+    <senha>758</senha>    
+  </usuario>   
 </login>

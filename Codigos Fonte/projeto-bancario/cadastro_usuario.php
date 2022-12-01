@@ -37,6 +37,7 @@
              */
             $xml  = "<usuario>";
             $xml .= "<nome> $nome </nome>";
+            $xml .= "<nome> $nome </nome>";
         }
         ?>
         <table border="1">

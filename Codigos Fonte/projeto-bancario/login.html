@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>EECP Bancario - Login</title>
+    </head>
+    <body>
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Senha</td>
+                    <td><input type="password" name="senha" id="senha"></td>
+                </tr>
+                <tr>
+                    <td>Retorno</td>
+                    <td><input type="text" name="retorno" id="retorno"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input
+                            type="button"
+                            id="acessar"
+                            name="acessar"
+                            value="Acessar"
+                            onclick="validarDados()"
+                        >
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+
+    <script>
+        function validarDados() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const retorno = document.getElementById('retorno');
+
+            // Criando objeto para fazer requisição pelo ajax
+            let xmlHttpRequest = new XMLHttpRequest();
+            xmlHttpRequest.onreadystatechange = () => {
+                retorno.value = xmlHttpRequest.responseText;
+            }
+            xmlHttpRequest.open('POST', './login.php', true);
+            xmlHttpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xmlHttpRequest.send("email=" + email + "&senha=" + senha);
+        }
+    </script>
+</html>
