@@ -1,0 +1,11 @@
+1) Atualizar repositorio
+https://ricardo-reis.medium.com/comando-apt-no-linux-f5c22887006e
+
+2) Instalar Apache
+https://morioh.com/p/bf5a48829dfb
+
+3) Instalar PHP
+https://medium.com/@laraveltuts/how-to-install-and-run-php-8-x-on-ubuntu-20-04-8f18e7565c41
+
+4) Instalar MariaDB
+https://linuxhint.com/install-mariadb-ubuntu-22-04/open
