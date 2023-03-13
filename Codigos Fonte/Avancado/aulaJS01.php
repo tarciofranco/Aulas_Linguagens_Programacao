@@ -1,7 +1,17 @@
 <HTML>
 <HEAD>
-<TITLE>Manipuladores de Eventos</TITLE>
+<TITLE>Aula 01 JS</TITLE>
+<style>
+    body{
+        background-color: #C1C1C1;
+    }
+    #texto1{
+        background-color: red;
+    }
+</style>
 </HEAD>
-
-<BODY onLoad="defaultStatus=('Seja Bem Vindo!!!')"
-onUnLoad="alert('Obrigado pela Visita')">
+<body>
+    <span id="teste" onclick="alert('Adicionando texto 2')"> Primeira Aula de JS </span>
+    <span id="texto1"></span>
+</body>
+</html>
