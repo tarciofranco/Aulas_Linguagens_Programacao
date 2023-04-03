@@ -10,7 +10,7 @@ class ConectaBanco extends PDO{
         $this->user     = 'admin';
         $this->password = '1234';
         $this->host     = 'localhost';
-        $this->database = 'gerenciador_cardapio';
+        $this->database = 'polimenu';
         $this->port     = '3306';
 
         try{
