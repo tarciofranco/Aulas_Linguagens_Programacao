@@ -57,10 +57,19 @@ button {
     <button id="0" value="0" onclick="SelecionaNumeros(this.value)">0</button>
     <button id="" value="" >Limpar</button>
     <hr>
+    
+    <!-- Utilizando funcoes variadas para cada calculo 
     <button id="+" onclick="Somar()"> + </button>
-    <button id="+" onclick="Subtrair()"> - </button>
-    <button id="+" onclick="Multiplicar()"> * </button>
-    <button id="+" onclick="Divisao()"> / </button>
+    <button id="-" onclick="Subtrair()"> - </button>
+    <button id="*" onclick="Multiplicar()"> * </button>
+    <button id="/" onclick="Divisao()"> / </button>
+    -->
+
+    <!-- Utilizando funcao unica para calcular -->
+    <button id="+" value="+" onclick="Calcular(this.value)"> + </button>
+    <button id="-" value="-" onclick="Calcular(this.value)"> - </button>
+    <button id="*" value="*" onclick="Calcular(this.value)"> * </button>
+    <button id="/" value="/" onclick="Calcular(this.value)"> / </button>    
 </div>
 </body>
 <script>
@@ -72,6 +81,21 @@ function SelecionaNumeros(element){
     display.value = valor; //Display recebe a sequencia de numeros digitados
 }
 
+//Funcao unica para calcular
+function Calcular(operador){
+    
+    let valor = document.getElementById('display');
+    let result = document.getElementById('result');
+    let resultado = parseFloat(valor.value) +operador+ parseFloat(result.value);
+    console.log(typeof resultado);
+    console.log(resultado);
+    
+
+    result.value = parseFloat(resultado);
+    valor.value =0;
+}
+
+//Funcoes variadas para calcular
 function Somar(){
 
     let valor = document.getElementById('display');
@@ -108,8 +132,6 @@ function Multiplicar(){
     }
     ObjResult.value = resultado;
     ObjDisplay.value = 0;
-    
-
     
 }
 
