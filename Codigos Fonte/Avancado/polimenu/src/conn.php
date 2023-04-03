@@ -7,8 +7,8 @@ class ConectaBanco extends PDO{
     private $port;
 
     public function __construct(){
-        $this->user     = 'admin';
-        $this->password = '1234';
+        $this->user     = 'root';
+        $this->password = 'P123@456';
         $this->host     = 'localhost';
         $this->database = 'polimenu';
         $this->port     = '3306';

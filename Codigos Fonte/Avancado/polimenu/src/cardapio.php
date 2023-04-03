@@ -13,10 +13,10 @@ class Cardapio{
 
     /** Definicao das funcoes */
     //Gravacao dos dados na tabela cardapio
-    function Insere(){                    
-        //Atribuindo valores para serem inseridos no banco
-        $this->nome = 'Teste';
-        $this->descricao = 'Conteudo de descricao';
+    function Insere(String $nome, String $descricao){
+        //Atribuindo valores para serem inseridos no banco        
+        $this->nome = $nome;
+        $this->descricao = $descricao;
         $this->usuario = 1;
         $this->ativo = 'A';
 
@@ -29,6 +29,14 @@ class Cardapio{
         $sql->bindParam(3, $this->usuario);
         $sql->bindParam(4 , $this->ativo);
         $sql->execute();
+        
+        if($sql->rowCount() > 0){
+            print 'Dados gravados com sucesso!';
+        }else{
+            print 'Erro gravando dados!';
+        }
+        
+
 
     }
 
@@ -50,7 +58,7 @@ class Cardapio{
 
 //testando a classe
 $cardapios = new Cardapio;
-$cardapios->Insere();
+$cardapios->Insere('Arroz Colorido', 'Coisas');
 ?>
 
 
