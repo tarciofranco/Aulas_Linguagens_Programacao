@@ -4,7 +4,7 @@ include 'conn.php';
 
 class Cardapio{
     //Atributos
-    public $id;
+    private $id;
     public $nome;
     public $descricao;
     public $data;
@@ -35,13 +35,18 @@ class Cardapio{
         }else{
             print 'Erro gravando dados!';
         }
-        
-
-
     }
 
     function Listar(){
         //Listar todos os registros da tabela cardapio
+        $db = new ConectaBanco;
+        $query = 'SELECT * FROM cardapio';
+        $sql = $db->prepare($query);
+        $sql->execute();
+        $ret = $sql->fetchAll();
+
+        return $ret;
+
     }
 
     function Alterar(){
@@ -56,9 +61,6 @@ class Cardapio{
 
 }
 
-//testando a classe
-$cardapios = new Cardapio;
-$cardapios->Insere('Arroz Colorido', 'Coisas');
 ?>
 
 
