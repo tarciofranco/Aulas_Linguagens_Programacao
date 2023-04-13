@@ -36,7 +36,7 @@ $dados = $c->Listar();
 print '<br>';
 foreach ($dados as $key => $value) {
     # code...
-    print '<strong> Codigo: </strong> '.$value['id']. ' - <strong> Nome: </strong>'.$value['nome']. ' - <strong>Descrição: </strong> '.$value['descricao'].'<br>';
+    print '<strong> Codigo: </strong> '.$value['id']. ' - <strong> Nome: </strong>'.$value['nome']. ' - <strong>Descrição: </strong> '.$value['descricao'].'<strong> Data: </strong>'.$value['data'].'<br>';
 }
 
 
