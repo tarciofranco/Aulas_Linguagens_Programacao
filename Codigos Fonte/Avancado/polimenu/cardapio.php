@@ -1,7 +1,10 @@
-<?php require_once 'include.php' ?>
+<?php 
+  require_once 'config.php'; 
+  require_once 'config.html';
+?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
+  <!-- <head><script src="../assets/js/color-modes.js"></script> -->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -155,6 +158,43 @@
     <?php include 'navibar.php'; ?>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <h2>Pagina de Cardapio</h2>
+
+      
+      <hr>
+ <!-- Button trigger modal -->
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoItemCardapio">
+  + Cardápio
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="novoItemCardapio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Novo Cardapio</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nome:</label>
+            <input type="text" class="form-control" id="nome">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Descrição:</label>
+            <textarea class="form-control" id="descricao"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" onclick="Salvar()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+      <hr>
       <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
@@ -184,7 +224,7 @@
         </tbody>
       </table>
 
-      
+  
 
     </main>
    
@@ -192,7 +232,7 @@
 </div>
 
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script><script src="js/dashboard.js"></script>
   </body>
@@ -201,5 +241,22 @@
   $(document).ready(function () {
     $('#example').DataTable();
 });
+</script>
+<script>
+  function Salvar(){
+    var nome = document.getElementById('nome').value;
+    var descricao = document.getElementById('descricao').value;
+
+    //Ajax
+   $.ajax({
+      method: "POST",
+      url: 'enviaDadosCardapio.php',
+      data: {parm01: nome, parm02: descricao},
+      success: function(ret){
+        console.log(ret);
+      }      
+   })
+
+  }
 </script>
 </html>
