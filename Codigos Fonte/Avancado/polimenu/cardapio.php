@@ -185,10 +185,11 @@
             <textarea class="form-control" id="descricao"></textarea>
           </div>
         </form>
+        <div class="alert alert-info" role="alert" id="resultado" style="display: none;"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary" onclick="Salvar()">Salvar</button>
+        <button type="button" class="btn btn-primary" onclick="Salvar()">Salvar</button>        
       </div>
     </div>
   </div>
@@ -244,8 +245,10 @@
 </script>
 <script>
   function Salvar(){
+    //Capitura os objetos do formulario
     var nome = document.getElementById('nome').value;
     var descricao = document.getElementById('descricao').value;
+    var objResult = document.getElementById('resultado');
 
     //Ajax
    $.ajax({
@@ -253,10 +256,18 @@
       url: 'enviaDadosCardapio.php',
       data: {parm01: nome, parm02: descricao},
       success: function(ret){
-        console.log(ret);
+        //console.log(ret);
+        objResult.style.display = "block";
+        objResult.innerHTML = ret;
+      },
+      error: function(ret){
+        objResult.innerHTML = 'Endereço não encontrado';
       }      
    })
+  }
 
+  function CarregaFormulario(){
+    document.getElementById('resultado').innerHTML = '';
   }
 </script>
 </html>

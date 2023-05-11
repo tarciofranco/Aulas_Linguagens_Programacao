@@ -40,7 +40,7 @@ class Cardapio{
     function Listar(){
         //Listar todos os registros da tabela cardapio
         $db = new ConectaBanco;
-        $query = 'SELECT * FROM cardapio';
+        $query = "SELECT * FROM cardapio WHERE ativo = 'A' ";
         $sql = $db->prepare($query);
         $sql->execute();
         $ret = $sql->fetchAll();
