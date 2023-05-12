@@ -195,6 +195,32 @@
   </div>
 </div> 
 
+
+<!-- Modal -->
+<div class="modal fade" id="excluiCardapio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            Deseja realmente excluir este registro?
+          </div>
+        </form>
+        <div class="alert alert-info" role="alert" id="resultadoExcluir" style="display: none;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="btnExcluirModal" onclick="Excluir(this.value)">Excluir</button>        
+      </div>
+    </div>
+  </div>
+</div> 
+
+
       <hr>
       <table id="example" class="display" style="width:100%">
         <thead>
@@ -202,7 +228,8 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Descrição</th>
-                <th>Data</th>                
+                <th>Data</th>  
+                <th>Opções </th>              
             </tr>
         </thead>
         <tbody>
@@ -217,6 +244,9 @@
                 <td><?php print $value['nome']; ?></td>
                 <td><?php print $value['descricao']; ?></td>
                 <td><?php print $value['data']; ?></td>
+                <td>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#excluiCardapio" onclick="ConfirmaExcluir(this.value)"  value="<?php print $value['id']; ?>" class="btn btn-danger">x</button>
+                </td>
             </tr>
             <?php
           }
@@ -264,6 +294,31 @@
         objResult.innerHTML = 'Endereço não encontrado';
       }      
    })
+  }
+  
+  function ConfirmaExcluir(id){
+    document.getElementById('btnExcluirModal').value = id;
+  }
+
+  function Excluir(id){   
+    objResult = document.getElementById('resultadoExcluir');
+
+    $.ajax({
+      url: 'deletaCardapio.php',
+      method: 'POST',
+      data: {parm01: id},
+      success: function(ret){
+        objResult.style.display = "block";
+        objResult.innerHTML = ret;
+        RefreshPage();
+      }
+    })
+  }
+
+  function RefreshPage(){
+    setTimeout(function(){
+   window.location.reload(1);
+  }, 2000)
   }
 
   function CarregaFormulario(){

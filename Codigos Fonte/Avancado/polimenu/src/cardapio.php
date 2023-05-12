@@ -1,5 +1,8 @@
 <?php
 //Classe cardapio
+
+use PSpell\Config;
+
 include 'conn.php';
 
 class Cardapio{
@@ -53,8 +56,20 @@ class Cardapio{
         //Alterar registro da na tabela cardapio
     }
 
-    function Exclui(){
+    function Exclui(Int $id){
         //Exclui registro na tabela cardapio
+        $this->id = $id;
+        $db = new ConectaBanco;
+        $q = "UPDATE cardapio SET ativo = 'I' WHERE id = ? AND ativo = 'A' ";
+        $sql = $db->prepare($q);
+        $sql->bindParam(1, $this->id );
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            print 'Registro excluido com sucesso';
+        }else{
+            print 'Erro excluindo o registro';
+        }
     }
 
 
