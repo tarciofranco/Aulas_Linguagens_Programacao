@@ -1,9 +1,8 @@
 <?php
 //Classe cardapio
 
-use PSpell\Config;
 
-include 'conn.php';
+include './conn.php';
 
 class Cardapio{
     //Atributos
