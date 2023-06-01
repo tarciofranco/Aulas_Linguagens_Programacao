@@ -1,10 +1,6 @@
-<?php 
-  require_once 'config.php'; 
-  require_once 'config.html';
-?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <!-- <head><script src="../assets/js/color-modes.js"></script> -->
+  <head><script src="../assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +15,7 @@
 
     
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -97,7 +93,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -156,173 +152,159 @@
 <div class="container-fluid">
   <div class="row">
     <?php include 'navibar.php'; ?>
+
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <h2>Pagina de Cardapio</h2>
-
-      
-      <hr>
- <!-- Button trigger modal -->
- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoItemCardapio">
-  + Cardápio
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="novoItemCardapio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Novo Cardapio</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Nome:</label>
-            <input type="text" class="form-control" id="nome">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
           </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Descrição:</label>
-            <textarea class="form-control" id="descricao"></textarea>
-          </div>
-        </form>
-        <div class="alert alert-info" role="alert" id="resultado" style="display: none;"></div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar" class="align-text-bottom"></span>
+            This week
+          </button>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary" onclick="Salvar()">Salvar</button>        
-      </div>
-    </div>
-  </div>
-</div> 
 
+      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
-<!-- Modal -->
-<div class="modal fade" id="excluiCardapio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            Deseja realmente excluir este registro?
-          </div>
-        </form>
-        <div class="alert alert-info" role="alert" id="resultadoExcluir" style="display: none;"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger" id="btnExcluirModal" onclick="Excluir(this.value)">Excluir</button>        
-      </div>
-    </div>
-  </div>
-</div> 
-
-
-      <hr>
-      <table id="example" class="display" style="width:100%">
-        <thead>
+      <h2>Section title</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
             <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Data</th>  
-                <th>Opções </th>              
+              <th scope="col">#</th>
+              <th scope="col">Header</th>
+              <th scope="col">Header</th>
+              <th scope="col">Header</th>
+              <th scope="col">Header</th>
             </tr>
-        </thead>
-        <tbody>
-      <?php
-        if($dadosCardapio = $cardapio->Listar()){
-          //var_dump($dadosCardapio);
-          foreach ($dadosCardapio as $key => $value) {
-            # code...
-            ?>
-             <tr>
-                <td><?php print $value['id']; ?></td>
-                <td><?php print $value['nome']; ?></td>
-                <td><?php print $value['descricao']; ?></td>
-                <td><?php print $value['data']; ?></td>
-                <td>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#excluiCardapio" onclick="ConfirmaExcluir(this.value)"  value="<?php print $value['id']; ?>" class="btn btn-danger">x</button>
-                </td>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,001</td>
+              <td>random</td>
+              <td>data</td>
+              <td>placeholder</td>
+              <td>text</td>
             </tr>
-            <?php
-          }
-        }
-      ?>
-        </tbody>
-      </table>
-
-  
-
+            <tr>
+              <td>1,002</td>
+              <td>placeholder</td>
+              <td>irrelevant</td>
+              <td>visual</td>
+              <td>layout</td>
+            </tr>
+            <tr>
+              <td>1,003</td>
+              <td>data</td>
+              <td>rich</td>
+              <td>dashboard</td>
+              <td>tabular</td>
+            </tr>
+            <tr>
+              <td>1,003</td>
+              <td>information</td>
+              <td>placeholder</td>
+              <td>illustrative</td>
+              <td>data</td>
+            </tr>
+            <tr>
+              <td>1,004</td>
+              <td>text</td>
+              <td>random</td>
+              <td>layout</td>
+              <td>dashboard</td>
+            </tr>
+            <tr>
+              <td>1,005</td>
+              <td>dashboard</td>
+              <td>irrelevant</td>
+              <td>text</td>
+              <td>placeholder</td>
+            </tr>
+            <tr>
+              <td>1,006</td>
+              <td>dashboard</td>
+              <td>illustrative</td>
+              <td>rich</td>
+              <td>data</td>
+            </tr>
+            <tr>
+              <td>1,007</td>
+              <td>placeholder</td>
+              <td>tabular</td>
+              <td>information</td>
+              <td>irrelevant</td>
+            </tr>
+            <tr>
+              <td>1,008</td>
+              <td>random</td>
+              <td>data</td>
+              <td>placeholder</td>
+              <td>text</td>
+            </tr>
+            <tr>
+              <td>1,009</td>
+              <td>placeholder</td>
+              <td>irrelevant</td>
+              <td>visual</td>
+              <td>layout</td>
+            </tr>
+            <tr>
+              <td>1,010</td>
+              <td>data</td>
+              <td>rich</td>
+              <td>dashboard</td>
+              <td>tabular</td>
+            </tr>
+            <tr>
+              <td>1,011</td>
+              <td>information</td>
+              <td>placeholder</td>
+              <td>illustrative</td>
+              <td>data</td>
+            </tr>
+            <tr>
+              <td>1,012</td>
+              <td>text</td>
+              <td>placeholder</td>
+              <td>layout</td>
+              <td>dashboard</td>
+            </tr>
+            <tr>
+              <td>1,013</td>
+              <td>dashboard</td>
+              <td>irrelevant</td>
+              <td>text</td>
+              <td>visual</td>
+            </tr>
+            <tr>
+              <td>1,014</td>
+              <td>dashboard</td>
+              <td>illustrative</td>
+              <td>rich</td>
+              <td>data</td>
+            </tr>
+            <tr>
+              <td>1,015</td>
+              <td>random</td>
+              <td>tabular</td>
+              <td>information</td>
+              <td>text</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
-   
   </div>
 </div>
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script><script src="js/dashboard.js"></script>
   </body>
-
-<script>
-  $(document).ready(function () {
-    $('#example').DataTable();
-});
-</script>
-<script>
-  function Salvar(){
-    //Capitura os objetos do formulario
-    var nome = document.getElementById('nome').value;
-    var descricao = document.getElementById('descricao').value;
-    var objResult = document.getElementById('resultado');
-
-    //Ajax
-   $.ajax({
-      method: "POST",
-      url: 'enviaDadosCardapio.php',
-      data: {parm01: nome, parm02: descricao},
-      success: function(ret){
-        //console.log(ret);
-        objResult.style.display = "block";
-        objResult.innerHTML = ret;
-      },
-      error: function(ret){
-        objResult.innerHTML = 'Endereço não encontrado';
-      }      
-   })
-  }
-  
-  function ConfirmaExcluir(id){
-    document.getElementById('btnExcluirModal').value = id;
-  }
-
-  function Excluir(id){   
-    objResult = document.getElementById('resultadoExcluir');
-
-    $.ajax({
-      url: 'deletaCardapio.php',
-      method: 'POST',
-      data: {parm01: id},
-      success: function(ret){
-        objResult.style.display = "block";
-        objResult.innerHTML = ret;
-        RefreshPage();
-      }
-    })
-  }
-
-  function RefreshPage(){
-    setTimeout(function(){
-   window.location.reload(1);
-  }, 2000)
-  }
-
-  function CarregaFormulario(){
-    document.getElementById('resultado').innerHTML = '';
-  }
-</script>
 </html>
