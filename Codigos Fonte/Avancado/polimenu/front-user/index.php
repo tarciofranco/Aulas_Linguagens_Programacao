@@ -19,6 +19,14 @@
 
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+>
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -201,9 +209,9 @@
             <li class="list-group-item">Dapibus ac facilisis in</li>
             <li class="list-group-item">Vestibulum at eros</li>
           </ul>  -->
-          <div class="card-body">
-          <i class="fa-solid fa-heart"></i>
-            <a href="#" class="card-link">Another link</a>
+          <div class="card-body">            
+            <button class="btn btn-outline-success" href="#">  <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i> 100 </button>
+            <button class="btn btn-outline-danger" href="#">  <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 20 </button>
           </div>
         </div>
       </div>

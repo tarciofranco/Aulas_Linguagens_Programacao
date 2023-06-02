@@ -1,5 +1,7 @@
 <?php
 
-include 'src/conn.php';
-$conn = new ConectaBanco;
-//var_dump($conn);
+include 'src/curtidas.php';
+$c = new Curtidas;
+
+$curtidas = $c->Curtida(22,0,1);
+var_dump($curtidas);
