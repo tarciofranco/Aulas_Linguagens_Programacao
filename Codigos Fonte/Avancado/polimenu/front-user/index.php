@@ -25,7 +25,7 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
->
+
 
     <style>
       .bd-placeholder-img {
@@ -195,10 +195,10 @@
      foreach($dados as $key => $value){
 
      ?>
-      <div class="col">
+      <div class="col" style="padding-bottom: 2rem;">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="../img/food01.jpg" alt="Card image cap">
-          <div class="card-body">
+          <div class="card-body" style="height: 16rem;">
             <h5 class="card-title"><?php echo $value['nome']; ?></h5>
             <p class="card-text">
             <?php echo $value['descricao']; ?>
@@ -209,7 +209,7 @@
             <li class="list-group-item">Dapibus ac facilisis in</li>
             <li class="list-group-item">Vestibulum at eros</li>
           </ul>  -->
-          <div class="card-body">            
+          <div class="card-footer">            
             <button class="btn btn-outline-success" href="#">  <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i> 100 </button>
             <button class="btn btn-outline-danger" href="#">  <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 20 </button>
           </div>
