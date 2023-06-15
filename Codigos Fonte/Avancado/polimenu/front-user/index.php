@@ -234,55 +234,26 @@
 
     <div class="table-responsive" id="top-five">
       <table class="table text-center">
-        <thead>
+        <thead class="thead-light">
           <tr>
-            <th style="width: 34%;"></th>
-            <th style="width: 22%;">Free</th>
-            <th style="width: 22%;">Pro</th>
-            <th style="width: 22%;">Enterprise</th>
+            <th style="width: 50%;">Cardapio</th>
+            <th style="width: 25%;">Gostei </th>
+            <th style="width: 25%;">Não Gostei</th>
           </tr>
         </thead>
+        <?php
+          $topFive = $curtidas->TopFive();
+          foreach($topFive as $key => $value){
+          
+        ?>
         <tbody>
           <tr>
-            <th scope="row" class="text-start">Public</th>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" class="text-start">Private</th>
-            <td></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+            <td scope="row" class="text-start"><?php print $value['nome'];?></td>
+            <td><button class="btn btn-outline-success">  <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i> <?php print $value['gostei']; ?> </button></td>
+            <td><button class="btn btn-outline-danger">  <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i> <?php print $value['naogostei']; ?> </button></td>
           </tr>
         </tbody>
-
-        <tbody>
-          <tr>
-            <th scope="row" class="text-start">Permissions</th>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" class="text-start">Sharing</th>
-            <td></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" class="text-start">Unlimited members</th>
-            <td></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" class="text-start">Extra security</th>
-            <td></td>
-            <td></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-          </tr>
-        </tbody>
+        <?php } ?>
       </table>
     </div>
   </main>
