@@ -192,6 +192,8 @@
      <?php 
      $dados = $cardapio->Listar();
      foreach($dados as $key => $value){
+      $gostei = 0;
+      $naogostei = 0;
 
      ?>
       <div class="col" style="padding-bottom: 2rem;">
@@ -208,9 +210,18 @@
             <li class="list-group-item">Dapibus ac facilisis in</li>
             <li class="list-group-item">Vestibulum at eros</li>
           </ul>  -->
-          <div class="card-footer">            
-            <button class="btn btn-outline-success" href="#">  <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i> 100 </button>
-            <button class="btn btn-outline-danger" href="#">  <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 20 </button>
+          <div class="card-footer">    
+            <?php
+              //Busca curtidas
+              $buscaCurtidas = $curtidas->BuscarPorIDCardapio($value['id']);
+              //var_dump($buscaCurtidas);
+              foreach($buscaCurtidas as $key2 => $value2){
+                $gostei = $value2['gostei'];
+                $naogostei = $value2['naogostei'];
+              }
+            ?>
+            <button class="btn btn-outline-success" href="#" onclick="curtida(<?php print $value['id'] ?>, 1,0)">  <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i> <?php print $gostei; ?> </button>
+            <button class="btn btn-outline-danger" href="#" onclick="curtida(<?php print $value['id'] ?>, 0,1)">  <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <?php print $naogostei; ?> </button>
           </div>
         </div>
       </div>
@@ -307,7 +318,20 @@
   </footer>
 </div>
 
-
-    
   </body>
+
+  <script>
+    function curtida(cardapio, gostei, naogostei){
+      $.ajax({
+        url: 'enviaCurtida.php',
+        method: 'POST',
+        data: {'cardapio': cardapio, 'gostei': gostei, 'naogostei': naogostei },
+        success: function(ret){
+          location.reload();
+        }
+      })
+
+
+    }
+  </script>
 </html>

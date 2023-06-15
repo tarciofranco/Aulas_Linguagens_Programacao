@@ -2,7 +2,7 @@
 //Classe cardapio
 
 
-include 'conn.php';
+require_once 'conn.php';
 
 class Cardapio{
     //Atributos

@@ -2,7 +2,7 @@
 //Classe curtidas
 
 
-include 'conn.php';
+require_once 'conn.php';
 
 class Curtidas{
     //Atributos
@@ -74,37 +74,7 @@ class Curtidas{
         return $ret;
     }
 
-    function Listar(){
-        //Listar todos os registros da tabela cardapio
-        $db = new ConectaBanco;
-        $query = "SELECT * FROM cardapio WHERE ativo = 'A' ";
-        $sql = $db->prepare($query);
-        $sql->execute();
-        $ret = $sql->fetchAll();
-
-        return $ret;
-
-    }
-
-    function Alterar(){
-        //Alterar registro da na tabela cardapio
-    }
-
-    function Exclui(Int $id){
-        //Exclui registro na tabela cardapio
-        $this->id = $id;
-        $db = new ConectaBanco;
-        $q = "UPDATE cardapio SET ativo = 'I' WHERE id = ? AND ativo = 'A' ";
-        $sql = $db->prepare($q);
-        $sql->bindParam(1, $this->id );
-        $sql->execute();
-
-        if($sql->rowCount() > 0){
-            print 'Registro excluido com sucesso';
-        }else{
-            print 'Erro excluindo o registro';
-        }
-    }
+   
 
 
 

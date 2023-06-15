@@ -3,5 +3,5 @@
 include 'src/curtidas.php';
 $c = new Curtidas;
 
-$curtidas = $c->Curtida(22,0,1);
+$curtidas = $c->Curtida(6,1,0);
 var_dump($curtidas);
