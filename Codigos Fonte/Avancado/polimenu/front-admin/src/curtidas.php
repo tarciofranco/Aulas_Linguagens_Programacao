@@ -78,7 +78,7 @@ class Curtidas{
 
     function TopFive(){        
         $db = new ConectaBanco;
-        $q = "SELECT nome, gostei, naogostei FROM curtidas A INNER JOIN cardapio B ON A.cardapio = B.id WHERE A.status = '1' ORDER BY gostei DESC";
+        $q = "SELECT nome, descricao, gostei, naogostei FROM curtidas A INNER JOIN cardapio B ON A.cardapio = B.id WHERE A.status = '1' ORDER BY gostei DESC";
         $sql = $db->prepare($q);
         $sql->execute();
         $ret = $sql->fetchAll();

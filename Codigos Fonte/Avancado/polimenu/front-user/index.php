@@ -168,7 +168,7 @@
 <div class="container py-3">
   <header>
     <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+      <a href="" class="d-flex align-items-center link-body-emphasis text-decoration-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
         <span class="fs-4">PoliMenu</span>
       </a>
@@ -182,34 +182,47 @@
 
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
       <h1 class="display-4 fw-normal">Lista de Cardápio </h1>
-      <p class="fs-5 text-body-secondary">Listagem dos pratos disponíveis na escola.</p>
+      <p class="fs-5 text-body-secondary">Listagem dos pratos disponíveis na escola. Os pratos estão sendo exibidos por ordem da semana.</p>
     </div>
   </header>
 
   <main id="home">
+    
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
      <!-- Cards dos cardapios -->
      <?php 
      $dados = $cardapio->Listar();
-     foreach($dados as $key => $value){
+     $semana = 0;
+     
+     foreach($dados as $key => $value){      
       $gostei = 0;
-      $naogostei = 0;
-
+      $naogostei = 0;  
+      if($semana == 0 )    {
+        $semana = $value['num_semana'];        
+      }
+      if($semana <> $value['num_semana']){                
+        $semana = $value['num_semana'];        
+        // print '<h3> Semana - '. $semana .'</h3>';
+        print '<p></p>';
+        
+      }      
      ?>
       <div class="col" style="padding-bottom: 2rem;">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="../img/food01.jpg" alt="Card image cap">
-          <div class="card-body" style="height: 16rem;">
+          <img class="card-img-top" width="200" height="160" src="../img/food01.jpg" alt="Card image cap">
+          <div class="card-body" style="height: 12rem;">
             <h5 class="card-title"><?php echo $value['nome']; ?></h5>
-            <p class="card-text">
-            <?php echo $value['descricao']; ?>
+            <p class="card-text">      
+            <?php echo $value['descricao']; ?>      
             </p>
           </div>
-          <!-- <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>  -->
+          <ul class="list-group list-group-flush ">
+          <li class="list-group-item text-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+</svg> <?php echo $value['dia_semana']; ?> 
+</li>   
+         
+          </ul> 
           <div class="card-footer">    
             <?php
               //Busca curtidas
@@ -225,30 +238,29 @@
           </div>
         </div>
       </div>
-      <?php
+      <?php        
      }
       ?>
     </div>
 
-    <h2 class="display-6 text-center mb-4">Top Five</h2>
+    <h2 class="display-6 text-center mb-4 text-danger">Top Five</h2>
 
     <div class="table-responsive" id="top-five">
       <table class="table text-center">
         <thead class="thead-light">
           <tr>
-            <th style="width: 50%;">Cardapio</th>
-            <th style="width: 25%;">Gostei </th>
-            <th style="width: 25%;">Não Gostei</th>
+            <th style="width: 70%;">Cardapio</th>
+            <th style="width: 15%;">Gostei </th>
+            <th style="width: 15%;">Não Gostei</th>
           </tr>
         </thead>
         <?php
           $topFive = $curtidas->TopFive();
           foreach($topFive as $key => $value){
-          
         ?>
         <tbody>
           <tr>
-            <td scope="row" class="text-start"><?php print $value['nome'];?></td>
+            <td scope="row" class="text-start"><?php print "<b>". $value['nome'].' </b> - '. $value['descricao'];?></td>
             <td><button class="btn btn-outline-success">  <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i> <?php print $value['gostei']; ?> </button></td>
             <td><button class="btn btn-outline-danger">  <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i> <?php print $value['naogostei']; ?> </button></td>
           </tr>

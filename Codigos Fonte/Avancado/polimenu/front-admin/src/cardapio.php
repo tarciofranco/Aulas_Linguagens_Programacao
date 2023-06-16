@@ -42,7 +42,7 @@ class Cardapio{
     function Listar(){
         //Listar todos os registros da tabela cardapio
         $db = new ConectaBanco;
-        $query = "SELECT * FROM cardapio WHERE ativo = 'A' ";
+        $query = "SELECT * FROM cardapio WHERE ativo = 'A' ORDER BY num_semana, dia_semana  ";
         $sql = $db->prepare($query);
         $sql->execute();
         $ret = $sql->fetchAll();
